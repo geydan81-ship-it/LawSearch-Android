@@ -1,0 +1,111 @@
+法规阅读器（LawSearch）
+Copyright 2026 The LawSearch Project
+
+项目地址：https://github.com/geydan81-ship-it/LawSearch-Android
+项目门户：https://github.com/geydan81-ship-it/LawSearch
+作者主页：https://github.com/geydan81-ship-it
+B 站主页：https://space.bilibili.com/673364404
+
+本产品包含由以下项目开发的软件与数据。
+
+====================================================================
+一、法规数据
+====================================================================
+
+本项目内置的法规文本来自：
+
+  国家法律法规数据库
+  https://flk.npc.gov.cn
+  主办：全国人民代表大会常务委员会办公厅
+
+  经开源项目整理为结构化格式：
+  LawRefBook/Laws
+  https://github.com/LawRefBook/Laws
+
+版权说明：
+
+  法律法规文本属于官方文献。依《中华人民共和国著作权法》第五条，
+  本法不适用于「法律、法规，国家机关的决议、决定、命令和其他具有
+  立法、行政、司法性质的文件，及其官方正式译文」，故该等文本不受
+  著作权保护，可自由使用与传播。
+
+  本项目的整理格式（JSON 结构、分类标签、锚点 id 等）由本项目作者
+  完成，随本项目代码一并按 Apache License 2.0 发布。
+
+  重要提示：法规文本可能存在收录滞后、解析误差或遗漏，不构成法律
+  依据。涉及实际法律事务，请以国家法律法规数据库的官方文本为准。
+
+  本项目不收录、不分发任何商业字体或含第三方版权的图片素材。
+
+====================================================================
+二、第三方开源软件
+====================================================================
+
+本产品使用了以下采用 Apache License 2.0 的第三方组件：
+
+  AndroidX / Jetpack Compose
+  Copyright (C) The Android Open Source Project
+  https://developer.android.com/jetpack
+  License: Apache License 2.0
+
+  AndroidX Room
+  Copyright (C) The Android Open Source Project
+  https://developer.android.com/jetpack/androidx/releases/room
+  License: Apache License 2.0
+
+  AndroidX WorkManager
+  Copyright (C) The Android Open Source Project
+  https://developer.android.com/jetpack/androidx/releases/work
+  License: Apache License 2.0
+
+  Kotlin / kotlinx.serialization / kotlinx.coroutines
+  Copyright (C) JetBrains s.r.o.
+  https://github.com/JetBrains/kotlin
+  License: Apache License 2.0
+
+  OkHttp
+  Copyright (C) Square, Inc.
+  https://github.com/square/okhttp
+  License: Apache License 2.0
+
+  Backdrop（Compose 液态玻璃效果）
+  Copyright (C) Kyant0
+  https://github.com/Kyant0/AndroidLiquidGlass
+  License: Apache License 2.0
+
+  Shapes（Compose 连续曲率形状）
+  Copyright (C) Kyant0
+  https://github.com/Kyant0/Shapes
+  License: Apache License 2.0
+
+上述组件的完整许可证文本见：
+  http://www.apache.org/licenses/LICENSE-2.0
+
+====================================================================
+三、设计与实现思路参考
+====================================================================
+
+液态玻璃的 CSS/SVG 滤镜思路参考：
+
+  nikdelvin/liquid-glass
+  https://github.com/nikdelvin/liquid-glass
+
+中文二元组分词与 FTS4 检索的设计，参考了以下公开实践：
+
+  SQLite FTS3/FTS4 官方文档
+  https://www.sqlite.org/fts3.html
+
+  Android 上 Asian 文本全文检索的社区方案
+  https://stackoverflow.com/questions/33252049
+
+以上仅参考设计思路，未复制其源代码。
+
+====================================================================
+四、声明
+====================================================================
+
+本软件按「原样」提供，不附带任何明示或暗示的担保。作者不对因使用
+本软件而产生的任何直接或间接损失负责。
+
+本软件仅供学习、查阅与研究使用，不构成法律意见，不能替代专业法律
+咨询。

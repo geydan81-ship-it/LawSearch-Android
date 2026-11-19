@@ -1,0 +1,116 @@
+# ============================================================
+# 法规阅读器 (LawSearch) — .gitignore
+# ============================================================
+
+# ---------- Gradle ----------
+.gradle/
+build/
+app/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ---------- 本机配置（含绝对路径，绝不能提交） ----------
+local.properties
+.tools/
+*.iml
+
+# ---------- 签名文件（绝不能提交） ----------
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+
+# ---------- IDE ----------
+.idea/
+*.ipr
+*.iws
+.vscode/
+*.swp
+*~
+
+# ---------- 备份 / 临时 ----------
+.corrupt-backup/
+laws-backup-*/
+*.bak
+*.orig
+*.rej
+*.tmp
+*.log
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+.pytest_cache/
+venv/
+.venv/
+
+# ---------- 构建产物 ----------
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+release/
+
+# ---------- 系统 ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================================
+# ⚠️ 白名单：下面这些必须提交，不要被上面的规则误伤
+# ============================================================
+
+# 内置法规数据 —— 这是本项目的核心资产，必须提交
+!app/src/main/assets/laws/
+!app/src/main/assets/laws/*.json.gz
+
+# 壁纸资源
+!app/src/main/res/drawable-nodpi/
+
+# Gradle Wrapper（保证任何人 clone 后能直接 ./gradlew）
+!gradlew
+!gradlew.bat
+!gradle/wrapper/
+
+# 文档与工具
+!tools/*.py
+!docs/*.md
+
+# ============================================================
+# ⛔ 版权风险排除项（Lead 已批准，2026-11-19）
+# ============================================================
+
+# 1. 示例壁纸 —— 含商业动漫 IP（BanG Dream! 丰川祥子 / 初音未来 等），
+#    来自第三方壁纸站，无再分发授权。不提交到仓库。
+#    应用支持「从相册选壁纸」，用户可自行设置。
+app/src/main/res/drawable-nodpi/wp_*.jpg
+
+# 2. 商业字体 —— © Beijing ZhongYi Electronics Co., All rights reserved
+#    （中易 FangSong/KaiTi/SimHei，随 Windows 授权，不得打包分发）
+#    这些文件应被彻底删除，此规则是防止有人误加回来的最后一道防线。
+app/src/main/res/font/*.ttf
+app/src/main/assets/fonts/*.ttf
+
+# 字体子集化脚本（字体已移除，仅历史参考）
+tools/subset_fonts.py
+
+# ============================================================
+# ⚠️ 注意：以下两项在开源发布前必须人工处理
+# ============================================================
+#
+# 1. app/src/main/res/font/*.ttf 与 app/src/main/assets/fonts/*.ttf
+#    这 6 个字体是商业字体（© Beijing ZhongYi Electronics Co.），
+#    **不得随开源仓库或 APK 分发**。发布前请删除，详见 README。
+#
+# 2. app/src/main/res/drawable-nodpi/wp_*.jpg
+#    14 张壁纸含来源不明的动漫/二次元图片，版权状态未确认。
+#    开源发布前应替换为自有版权或 CC0 素材。
+#
+# 已在文件上方按版权风险单独排除。删除文件后可移除本节注释。
+
+# 一次性调试脚本（本地诊断用，不属于项目）
+# ⚠️ 这两条必须放在 `!tools/*.py` 白名单**之后**才生效：
+# gitignore 是「后出现的规则覆盖前面的」，白名单把 tools/*.py 全部放行了，
+# 想排除其中个别文件，必须在其后再写排除规则。
+tools/_*.py
+tools/detect_corruption.py

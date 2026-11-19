@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  资源保留清单（配合 build.gradle.kts 的 isShrinkResources = true）
+
+  ⚠️ 壁纸必须保留！
+
+  内置壁纸是**动态引用**的：Wallpapers.kt 里存的是字符串资源名 "wp_01"，
+  运行时用 resources.getIdentifier(name, "drawable", pkg) 查找。
+  R8 的资源压缩器检测不到这种动态引用，会把 drawable-nodpi/wp_*.jpg 全删掉，
+  表现为 App 里「壁纸全部消失、背景变纯黑」。
+
+  这个 bug 在 1.1.2RC 上真实发生过（APK 里 wp_ 文件数 = 0）。
+
+  注意：这里要写成 @drawable/ 前缀，且 matchingNames 用全名或用正则。
+  因为 wp_01..wp_14 是 14 个独立资源，用 @drawable/wp_* 通配不生效，
+  必须逐个列出。以后新增壁纸要同步加到这里。
+-->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/wp_01,@drawable/wp_02,@drawable/wp_03,@drawable/wp_04,@drawable/wp_05,@drawable/wp_06,@drawable/wp_07,@drawable/wp_08,@drawable/wp_09,@drawable/wp_10,@drawable/wp_11,@drawable/wp_12,@drawable/wp_13,@drawable/wp_14" />
