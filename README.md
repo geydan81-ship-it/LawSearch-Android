@@ -1,11 +1,16 @@
-# 法规阅读器（LawSearch）
+# LawSearch · 中国大陆法律法规检索
 
-一款**纯离线**的 Android 中文法律法规阅读器，内置 **1,874 部**法规、**69,694 条**条文，
-带液态玻璃界面与中文全文检索。无需联网即可使用全部功能。
+一款**完全离线**的**中国大陆法律法规**阅读器，覆盖 **1,874 部**法规、**69,694 条**条文，
+支持中文全文检索、收藏与阅读位置记忆。无需联网即可使用全部功能。
+
+> **数据范围 / Scope**：本应用仅收录**中国大陆**（中华人民共和国）法律法规及司法解释，
+> **不包含**香港特别行政区、澳门特别行政区及台湾地区法规。
+> This app covers **laws and regulations of Mainland China only**.
 
 ![Platform](https://img.shields.io/badge/Android-8.0%2B%20%28API%2026%29-brightgreen)
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.4.10-blueviolet)
 ![Compose](https://img.shields.io/badge/Jetpack%20Compose-1.12.0-blue)
+![Scope](https://img.shields.io/badge/laws-Mainland%20China%20only-red)
 ![License](https://img.shields.io/badge/code-Apache--2.0-blue)
 
 **仓库**：[github.com/geydan81-ship-it/LawSearch-Android](https://github.com/geydan81-ship-it/LawSearch-Android)　|　
@@ -16,6 +21,7 @@
 ## 目录
 
 - [其他平台](#其他平台)
+- [数据范围](#数据范围)
 - [特性](#特性)
 - [截图](#截图)
 - [内置数据](#内置数据)
@@ -25,6 +31,7 @@
 - [中文检索的实现](#中文检索的实现)
 - [数据来源与署名](#数据来源与署名)
 - [开源协议](#开源协议)
+- [English](#english)
 
 ---
 
@@ -37,6 +44,30 @@ LawSearch 是一个跨平台项目，各平台独立仓库：
 | **Android** | **本项目** | 液态玻璃界面，内置 1,874 部法规 |
 | Windows | [LawSearch-Desktop](https://github.com/geydan81-ship-it/LawSearch-Desktop) | Windows 桌面版 |
 | 项目门户 | [LawSearch](https://github.com/geydan81-ship-it/LawSearch) | 项目总览与下载入口 |
+
+---
+
+## 数据范围
+
+本应用收录的是**中国大陆**（中华人民共和国）的法律、行政法规、司法解释等规范性文件。
+
+| | 类别 | 部数 |
+|---|---|---:|
+| ✅ 包含 | 宪法 | 8 |
+| ✅ 包含 | 法律 | 439 |
+| ✅ 包含 | 行政法规 | 876 |
+| ✅ 包含 | 司法解释 | 551 |
+| ❌ **不包含** | 香港特别行政区法律 | — |
+| ❌ **不包含** | 澳门特别行政区法律 | — |
+| ❌ **不包含** | 台湾地区法规 | — |
+
+> **Scope / 适用范围**：Mainland China (PRC) only.
+> Does **not** include the laws of Hong Kong SAR, Macau SAR, or the Taiwan region.
+
+数据来源：[国家法律法规数据库](https://flk.npc.gov.cn/)（全国人大常委会办公厅主办）。
+更新日期：2026-11-19。
+
+---
 
 ## 特性
 
@@ -334,3 +365,71 @@ score = 完整短语命中(100) + 连击长度×10 + 覆盖率×6 + 位置加成
 本应用仅供**学习、查阅与研究**使用。法规文本可能存在录入错误、版本滞后或解析遗漏，
 **不构成法律意见**，不能替代专业法律咨询。涉及实际法律问题，请咨询执业律师或
 以[国家法律法规数据库](https://flk.npc.gov.cn)的官方文本为准。
+
+本应用**仅覆盖中国大陆（中华人民共和国）法律法规**，不适用于香港特别行政区、
+澳门特别行政区及台湾地区。
+
+---
+
+## English
+
+**LawSearch** is a **completely offline** reader for **laws and regulations of
+Mainland China** (中华人民共和国法律法规), covering **1,874 statutes** and
+**69,694 articles** with full-text Chinese search, bookmarks and reading-position memory.
+
+### Scope
+
+**Mainland China only.**
+
+| | Category | Count |
+|---|---|---:|
+| ✅ Included | Constitution | 8 |
+| ✅ Included | Statutes (法律) | 439 |
+| ✅ Included | Administrative regulations (行政法规) | 876 |
+| ✅ Included | Judicial interpretations (司法解释) | 551 |
+| ❌ **Excluded** | Hong Kong SAR laws | — |
+| ❌ **Excluded** | Macau SAR laws | — |
+| ❌ **Excluded** | Taiwan region statutes | — |
+
+### Language
+
+Chinese (Simplified) only. The UI, content and search are all in Chinese.
+
+### Features
+
+- **Fully offline** — no network requests are ever made, no account required
+- **Chinese full-text search** using bigram tokenization over SQLite FTS4
+  (Android's bundled SQLite does not ship FTS5, so FTS4 was chosen deliberately)
+- **Fuzzy tolerance** — if a query yields no exact match, it degrades to
+  "all bigrams present" and flags the results as fuzzy
+- Liquid Glass UI (real-time `RuntimeShader` blur and refraction)
+- Bookmarks (article-level and statute-level), reading progress, search history
+- Validity status (in force / amended / revised / repealed)
+
+### Data source
+
+- **[National Laws and Regulations Database](https://flk.npc.gov.cn/)**
+  (国家法律法规数据库), maintained by the NPC Standing Committee of the PRC
+- Structured by the open-source project
+  **[LawRefBook/Laws](https://github.com/LawRefBook/Laws)**
+
+According to **Article 5 of the Copyright Law of the People's Republic of China**,
+laws, administrative regulations and other documents of a legislative,
+administrative or judicial nature are **not protected by copyright**. The legal
+texts bundled here are therefore freely redistributable.
+
+> The texts may contain transcription errors, outdated versions or parsing
+> omissions. This app **does not constitute legal advice** and must not replace
+> professional legal counsel. For authoritative texts, always refer to the
+> official National Laws and Regulations Database.
+
+### License
+
+- **Code**: [Apache License 2.0](LICENSE) — includes an explicit patent grant.
+- **Legal data**: official documents, not subject to copyright (see above).
+- **Third-party components**: see [NOTICE](NOTICE). All dependencies are Apache-2.0.
+
+### Author
+
+- GitHub: [@geydan81-ship-it](https://github.com/geydan81-ship-it)
+- Bilibili: [673364404](https://space.bilibili.com/673364404)
